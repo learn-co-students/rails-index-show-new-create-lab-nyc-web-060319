@@ -1,0 +1,22 @@
+class CouponsController < ApplicationController
+    def new
+        # binding.pry
+    end
+
+    def index
+        @coupons = Coupon.all
+    end
+
+
+    def show
+        @coupon = Coupon.find(params[:id])
+
+    end
+
+    def create
+        # binding.pry
+        @coupon = Coupon.create(coupon_code: params[:coupon][:coupon_code], store: params[:coupon][:store])
+        redirect_to coupon_path(Coupon.last)
+    end
+
+end
